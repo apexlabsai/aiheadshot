@@ -1,0 +1,89 @@
+{
+  "name": "problem_solution",
+  "title": "Problem & Solution",
+  "description": "Problem POV → reveal → demo → CTA",
+  "duration": 24,
+  "shots": [
+    {
+      "id": "problem_hook",
+      "startTime": 0,
+      "endTime": 3,
+      "type": "problem",
+      "description": "Problem identification",
+      "visual": "frustrated_person",
+      "text": "Tired of [problem]?"
+    },
+    {
+      "id": "problem_expand",
+      "startTime": 4,
+      "endTime": 8,
+      "type": "problem",
+      "description": "Problem expansion",
+      "visual": "problem_scenario",
+      "text": "We've all been there..."
+    },
+    {
+      "id": "solution_reveal",
+      "startTime": 9,
+      "endTime": 12,
+      "type": "solution",
+      "description": "Solution introduction",
+      "visual": "product_reveal",
+      "text": "Until I found this..."
+    },
+    {
+      "id": "demo",
+      "startTime": 13,
+      "endTime": 18,
+      "type": "demo",
+      "description": "Product demonstration",
+      "visual": "product_in_action",
+      "text": "Watch this..."
+    },
+    {
+      "id": "result",
+      "startTime": 19,
+      "endTime": 21,
+      "type": "result",
+      "description": "Result showcase",
+      "visual": "happy_result",
+      "text": "Game changer!"
+    },
+    {
+      "id": "cta",
+      "startTime": 22,
+      "endTime": 24,
+      "type": "cta",
+      "description": "Call to action",
+      "visual": "product_with_price",
+      "text": "Get yours now - link in bio"
+    }
+  ],
+  "transitions": [
+    {
+      "from": "problem_hook",
+      "to": "problem_expand",
+      "type": "quick_cut"
+    },
+    {
+      "from": "problem_expand",
+      "to": "solution_reveal",
+      "type": "zoom_in"
+    },
+    {
+      "from": "solution_reveal",
+      "to": "demo",
+      "type": "quick_cut"
+    },
+    {
+      "from": "demo",
+      "to": "result",
+      "type": "fade_in"
+    },
+    {
+      "from": "result",
+      "to": "cta",
+      "type": "quick_cut"
+    }
+  ]
+}

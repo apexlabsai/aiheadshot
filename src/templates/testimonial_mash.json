@@ -1,0 +1,89 @@
+{
+  "name": "testimonial_mash",
+  "title": "Testimonial Mash",
+  "description": "Pseudo-UGC quotes + captions + logo sting",
+  "duration": 24,
+  "shots": [
+    {
+      "id": "hook",
+      "startTime": 0,
+      "endTime": 2,
+      "type": "hook",
+      "description": "Attention-grabbing opening",
+      "visual": "close_up_face",
+      "text": "What people are saying about [product]..."
+    },
+    {
+      "id": "testimonial_1",
+      "startTime": 3,
+      "endTime": 7,
+      "type": "testimonial",
+      "description": "First testimonial",
+      "visual": "happy_customer_1",
+      "text": "\"This changed everything for me!\" - Sarah"
+    },
+    {
+      "id": "testimonial_2",
+      "startTime": 8,
+      "endTime": 12,
+      "type": "testimonial",
+      "description": "Second testimonial",
+      "visual": "happy_customer_2",
+      "text": "\"Best purchase I've made this year!\" - Mike"
+    },
+    {
+      "id": "testimonial_3",
+      "startTime": 13,
+      "endTime": 17,
+      "type": "testimonial",
+      "description": "Third testimonial",
+      "visual": "happy_customer_3",
+      "text": "\"Wish I found this sooner!\" - Emma"
+    },
+    {
+      "id": "logo_sting",
+      "startTime": 18,
+      "endTime": 21,
+      "type": "logo",
+      "description": "Logo and brand moment",
+      "visual": "product_with_logo",
+      "text": "[Product Name] - Trusted by thousands"
+    },
+    {
+      "id": "cta",
+      "startTime": 22,
+      "endTime": 24,
+      "type": "cta",
+      "description": "Call to action",
+      "visual": "product_with_price",
+      "text": "Get yours now - link in bio"
+    }
+  ],
+  "transitions": [
+    {
+      "from": "hook",
+      "to": "testimonial_1",
+      "type": "quick_cut"
+    },
+    {
+      "from": "testimonial_1",
+      "to": "testimonial_2",
+      "type": "quick_cut"
+    },
+    {
+      "from": "testimonial_2",
+      "to": "testimonial_3",
+      "type": "quick_cut"
+    },
+    {
+      "from": "testimonial_3",
+      "to": "logo_sting",
+      "type": "fade_in"
+    },
+    {
+      "from": "logo_sting",
+      "to": "cta",
+      "type": "quick_cut"
+    }
+  ]
+}

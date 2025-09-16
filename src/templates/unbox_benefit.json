@@ -1,0 +1,89 @@
+{
+  "name": "unbox_benefit",
+  "title": "Unbox & Benefit",
+  "description": "Hook → Unbox → 3 benefits → CTA",
+  "duration": 24,
+  "shots": [
+    {
+      "id": "hook",
+      "startTime": 0,
+      "endTime": 2,
+      "type": "hook",
+      "description": "Attention-grabbing opening",
+      "visual": "close_up_face",
+      "text": "POV: You just discovered the secret..."
+    },
+    {
+      "id": "unbox",
+      "startTime": 3,
+      "endTime": 6,
+      "type": "unbox",
+      "description": "Product unboxing moment",
+      "visual": "product_unboxing",
+      "text": "Look what just arrived..."
+    },
+    {
+      "id": "benefit_1",
+      "startTime": 7,
+      "endTime": 12,
+      "type": "benefit",
+      "description": "First key benefit",
+      "visual": "product_in_use",
+      "text": "Benefit 1: [Generated from product data]"
+    },
+    {
+      "id": "benefit_2",
+      "startTime": 13,
+      "endTime": 16,
+      "type": "benefit",
+      "description": "Second key benefit",
+      "visual": "product_close_up",
+      "text": "Benefit 2: [Generated from product data]"
+    },
+    {
+      "id": "benefit_3",
+      "startTime": 17,
+      "endTime": 18,
+      "type": "benefit",
+      "description": "Third key benefit",
+      "visual": "product_lifestyle",
+      "text": "Benefit 3: [Generated from product data]"
+    },
+    {
+      "id": "cta",
+      "startTime": 19,
+      "endTime": 24,
+      "type": "cta",
+      "description": "Call to action",
+      "visual": "product_with_price",
+      "text": "Get yours now - link in bio"
+    }
+  ],
+  "transitions": [
+    {
+      "from": "hook",
+      "to": "unbox",
+      "type": "quick_cut"
+    },
+    {
+      "from": "unbox",
+      "to": "benefit_1",
+      "type": "zoom_in"
+    },
+    {
+      "from": "benefit_1",
+      "to": "benefit_2",
+      "type": "quick_cut"
+    },
+    {
+      "from": "benefit_2",
+      "to": "benefit_3",
+      "type": "quick_cut"
+    },
+    {
+      "from": "benefit_3",
+      "to": "cta",
+      "type": "fade_in"
+    }
+  ]
+}
