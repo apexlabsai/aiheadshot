@@ -53,6 +53,15 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   try {
+    // Check if required environment variables are set
+    if (!process.env.STRIPE_SECRET_KEY || !process.env.PRICE_AD_PACK) {
+      console.error('Missing required environment variables:', {
+        STRIPE_SECRET_KEY: !!process.env.STRIPE_SECRET_KEY,
+        PRICE_AD_PACK: !!process.env.PRICE_AD_PACK
+      })
+      return NextResponse.redirect(`${getBaseUrl()}/buy?error=config_missing`)
+    }
+
     // Create a default checkout session for the main ad pack
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',

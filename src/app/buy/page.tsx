@@ -1,10 +1,51 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { CheckCircle, Star, ArrowRight, Zap, Clock, Shield, Download } from "lucide-react"
+import { CheckCircle, Star, ArrowRight, Zap, Clock, Shield, Download, AlertCircle } from "lucide-react"
 import Link from "next/link"
+import { useSearchParams } from "next/navigation"
+import { Suspense } from "react"
 
-export default function BuyPage() {
+function ErrorMessage({ error }: { error: string | null }) {
+  if (!error) return null
+
+  if (error === 'config_missing') {
+    return (
+      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-8">
+        <div className="flex items-center gap-2">
+          <AlertCircle className="h-5 w-5 text-yellow-600" />
+          <h3 className="font-semibold text-yellow-800">Configuration Required</h3>
+        </div>
+        <p className="text-yellow-700 mt-2">
+          The payment system is not yet configured. Please contact support or check back later.
+        </p>
+      </div>
+    )
+  }
+
+  if (error === 'checkout_failed') {
+    return (
+      <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-8">
+        <div className="flex items-center gap-2">
+          <AlertCircle className="h-5 w-5 text-red-600" />
+          <h3 className="font-semibold text-red-800">Checkout Failed</h3>
+        </div>
+        <p className="text-red-700 mt-2">
+          There was an error processing your payment. Please try again or contact support.
+        </p>
+      </div>
+    )
+  }
+
+  return null
+}
+
+function BuyPageContent() {
+  const searchParams = useSearchParams()
+  const error = searchParams.get('error')
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* Header */}
@@ -17,6 +58,11 @@ export default function BuyPage() {
             <Button variant="outline">← Back to Home</Button>
           </Link>
         </div>
+      </div>
+
+      {/* Error Message */}
+      <div className="container mx-auto px-4">
+        <ErrorMessage error={error} />
       </div>
 
       {/* Pricing Section */}
@@ -307,5 +353,13 @@ export default function BuyPage() {
         </div>
       </section>
     </div>
+  )
+}
+
+export default function BuyPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <BuyPageContent />
+    </Suspense>
   )
 }
