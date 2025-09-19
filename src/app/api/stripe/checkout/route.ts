@@ -5,6 +5,17 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2024-12-18.acacia',
 })
 
+// Get base URL for redirects
+function getBaseUrl() {
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`
+  }
+  if (getBaseUrl()) {
+    return getBaseUrl()
+  }
+  return 'http://localhost:3000'
+}
+
 export async function POST(request: NextRequest) {
   try {
     const { priceId } = await request.json()
@@ -23,8 +34,8 @@ export async function POST(request: NextRequest) {
           quantity: 1,
         },
       ],
-      success_url: `${process.env.NEXTAUTH_URL}/order?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXTAUTH_URL}/buy`,
+      success_url: `${getBaseUrl()}/order?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${getBaseUrl()}/buy`,
       metadata: {
         product: 'ad_pack'
       }
@@ -52,8 +63,8 @@ export async function GET() {
           quantity: 1,
         },
       ],
-      success_url: `${process.env.NEXTAUTH_URL}/order?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXTAUTH_URL}/buy`,
+      success_url: `${getBaseUrl()}/order?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${getBaseUrl()}/buy`,
       metadata: {
         product: 'ad_pack'
       }
@@ -62,6 +73,6 @@ export async function GET() {
     return NextResponse.redirect(session.url!)
   } catch (error) {
     console.error('Error creating checkout session:', error)
-    return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/buy?error=checkout_failed`)
+    return NextResponse.redirect(`${getBaseUrl()}/buy?error=checkout_failed`)
   }
 }
