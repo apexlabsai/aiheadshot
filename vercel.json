@@ -8,11 +8,5 @@
       "maxDuration": 60,
       "memory": 1024
     }
-  },
-  "crons": [
-    {
-      "path": "/api/admin/orders",
-      "schedule": "*/15 * * * *"
-    }
-  ]
+  }
 }
